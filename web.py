@@ -118,7 +118,7 @@ def message():
         r.set(f'messages_{id}', r.get(f'messages_{id}').decode('utf-8') + '\n\n' + message)
     return 'Message Sent'
 
-@app.route('/message')
+@app.route('/messages')
 def messages():
     access_key = request.args.get('access')
     id = request.args.get('id')
