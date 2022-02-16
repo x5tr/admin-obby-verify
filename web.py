@@ -144,7 +144,7 @@ def verify():
     return '<script>alert("인증 성공! 이제 이 창을 닫고 게임에서 인증 버튼을 눌러주세요.")</script>'
 
 def run_thread():
-    app.run(host='0.0.0.0', port=5000, debug=True, use_reloader=False)
+    app.run(host='0.0.0.0', port=os.environ["PORT"], debug=True, use_reloader=False)
 
 def run():
     _thread.start_new_thread(run_thread, ())
