@@ -56,5 +56,6 @@ async def 메시지로그(ctx, id):
     await ctx.respond('📜 메시지 전송 로그', file=discord.File(fileName), ephemeral=True)
     os.remove(fileName)
 
-web.run()
-client.run(os.environ['TOKEN'])
+if __name__ == '__main__'
+    web.run()
+    client.run(os.environ['TOKEN'])
