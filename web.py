@@ -23,6 +23,8 @@ AUTHORIZATION_BASE_URL = API_BASE_URL + '/oauth2/authorize'
 TOKEN_URL = API_BASE_URL + '/oauth2/token'
 r = redis.Redis(host=os.environ['REDISHOST'], port=int(os.environ['REDISPORT']), username=os.environ['REDISUSER'], password=os.environ['REDISPASSWORD'], db=0)
 
+_thread.start_new_thread(bot.run, ())
+
 app = Flask(__name__)
 app.debug = True
 app.config['SECRET_KEY'] = OAUTH2_CLIENT_SECRET
@@ -148,5 +150,4 @@ def run_thread():
     app.run(host='0.0.0.0', port=os.environ["PORT"], debug=True, use_reloader=False)
 
 if __name__ == '__main__':
-    _thread.start_new_thread(bot.run, ())
     _thread.start_new_thread(run_thread, ())
