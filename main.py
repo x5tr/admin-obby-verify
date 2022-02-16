@@ -1,6 +1,5 @@
 import discord
 import web
-import dotenv
 import redis
 import os
 import datetime
@@ -12,6 +11,7 @@ client = discord.Bot(intents=discord.Intents().all())
 r = redis.Redis(host=os.environ['REDISHOST'], port=int(os.environ['REDISPORT']), username=os.environ['REDISUSER'], password=os.environ['REDISPASSWORD'], db=0)
 
 try:
+    import dotenv
     dotenv.load_dotenv()
 except:
     pass
