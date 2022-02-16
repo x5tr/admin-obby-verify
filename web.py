@@ -3,6 +3,7 @@ import requests
 import redis
 import time
 import _thread
+import bot
 from flask import Flask, session, redirect, request, url_for
 from requests_oauthlib import OAuth2Session
 
@@ -146,5 +147,6 @@ def verify():
 def run_thread():
     app.run(host='0.0.0.0', port=os.environ["PORT"], debug=True, use_reloader=False)
 
-def run():
+if __name__ == '__main__':
     _thread.start_new_thread(run_thread, ())
+    bot.run()

@@ -1,5 +1,4 @@
 import discord
-import web
 import redis
 import os
 import datetime
@@ -7,14 +6,14 @@ import time
 import random
 import string
 
-client = discord.Bot(intents=discord.Intents().all())
-r = redis.Redis(host=os.environ['REDISHOST'], port=int(os.environ['REDISPORT']), username=os.environ['REDISUSER'], password=os.environ['REDISPASSWORD'], db=0)
-
 try:
     import dotenv
     dotenv.load_dotenv()
 except:
     pass
+
+client = discord.Bot(intents=discord.Intents().all())
+r = redis.Redis(host=os.environ['REDISHOST'], port=int(os.environ['REDISPORT']), username=os.environ['REDISUSER'], password=os.environ['REDISPASSWORD'], db=0)
 
 @client.event
 async def on_ready():
@@ -56,6 +55,5 @@ async def 메시지로그(ctx, id):
     await ctx.respond('📜 메시지 전송 로그', file=discord.File(fileName), ephemeral=True)
     os.remove(fileName)
 
-if __name__ == '__main__':
-    web.run()
+def run():
     client.run(os.environ['TOKEN'])
