@@ -148,5 +148,5 @@ def run_thread():
     app.run(host='0.0.0.0', port=os.environ["PORT"], debug=True, use_reloader=False)
 
 if __name__ == '__main__':
+    _thread.start_new_thread(bot.run, ())
     _thread.start_new_thread(run_thread, ())
-    bot.run()
