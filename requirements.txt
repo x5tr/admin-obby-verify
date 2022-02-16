@@ -1,6 +1,5 @@
 py-cord
 gunicorn
-dotenv
 redis
 requests
 flask

@@ -1,5 +1,4 @@
 import os
-import dotenv
 import requests
 import redis
 import time
@@ -8,6 +7,7 @@ from flask import Flask, session, redirect, request, url_for
 from requests_oauthlib import OAuth2Session
 
 try:
+    import dotenv
     dotenv.load_dotenv()
 except:
     pass
