@@ -11,4 +11,4 @@ ENV PORT=$PORT
 COPY . .
 
 RUN chmod +x ./run.sh
-CMD [ "./run.sh"]
+CMD ["gunicorn", "web:app"]
