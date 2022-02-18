@@ -167,6 +167,8 @@ def notice():
 
     if ':' not in contact:
         messagefunc(os.environ['ACCESS_KEY'], id, f'어드민 복구를 요청합니다! {message.jump_url}', True) 
+
+    return 'Notice Sent'
         
 
 
