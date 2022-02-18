@@ -10,5 +10,4 @@ ARG PORT=5000
 ENV PORT=$PORT
 COPY . .
 
-RUN chmod +x ./run.sh
 CMD ["gunicorn", "web:app"]
