@@ -166,7 +166,7 @@ def notice():
     message = loop.run_until_complete(channel.send(content))
 
     if ':' not in contact:
-        messagefunc(os.environ['ACCESS_KEY'], id, f'어드민 복구를 요청합니다! {message.jump_url}', True) 
+        messagefunc(os.environ['ACCESS_KEY'], id, f'어드민 복구를 요청! {message.jump_url}', True) 
 
     return 'Notice Sent'
         
