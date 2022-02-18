@@ -112,7 +112,7 @@ def verified():
         return 'Not found'
     return userinfo.decode('utf-8')
 
-def messagefunc(access_key, id, message):
+def messagefunc(access_key, id, message, silent=False):
     if access_key != os.environ['ACCESS_KEY']:
         return swal("메시지 전송에 실패했습니다. 인증하러 온 유저인 경우 게임에 재접속하여 새 인증 링크를 발급해주세요.")
     if message == None:
@@ -125,9 +125,10 @@ def messagefunc(access_key, id, message):
         r.set(f'messages_{id}', message)
     else:
         r.set(f'messages_{id}', r.get(f'messages_{id}').decode('utf-8') + '\n\n' + message)
-    channel = client.get_channel(937334831535243354)
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(channel.send(f':envelope_with_arrow:***{username} 님께서 온 메시지!***\n\n> `{message}`\n\n메시지에 답장하려면 `/메시지전송 {id}`를, 이 유저와 주고받은 메시지들을 확인하려면 `/메시지로그 {id}`를 사용하세요.'))
+    if not silent:
+        channel = client.get_channel(937334831535243354)
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(channel.send(f':envelope_with_arrow:***{username} 님께서 온 메시지!***\n\n> `{message}`\n\n메시지에 답장하려면 `/메시지전송 {id}`를, 이 유저와 주고받은 메시지들을 확인하려면 `/메시지로그 {id}`를 사용하세요.'))
     return 'Message Sent'
 
 @app.route('/message')
@@ -162,7 +163,10 @@ def notice():
         content += f'`{contact}`\n```'
 
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(channel.send(content))
+    message = loop.run_until_complete(channel.send(content))
+
+    if ':' not in contact:
+        messagefunc(os.environ['ACCESS_KEY'], id, f'어드민 복구를 요청합니다! {message.jump_url}', True) 
         
 
 
