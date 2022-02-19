@@ -131,7 +131,7 @@ def messagefunc(access_key, id, message, silent=False):
     if not silent:
         channel = client.get_channel(937334831535243354)
         loop = asyncio.get_event_loop()
-        loop.run_until_complete(channel.send(f':envelope_with_arrow:***{username} 님께서 온 메시지!***\n\n> `{message}`\n\n메시지에 답장하려면 `/메시지전송 {id}`를, 이 유저와 주고받은 메시지들을 확인하려면 `/메시지로그 {id}`를 사용하세요.'))
+        loop.run_until_complete(channel.send(f':envelope_with_arrow: ***{username} 님께서 보내신 메시지!***\n\n> `{message}`\n\n메시지에 답장하려면 `/메시지전송 {id}`를, 이 유저와 주고받은 메시지들을 확인하려면 `/메시지로그 {id}`를 사용하세요.'))
     return 'Message Sent'
 
 @app.route('/sendmessage')
