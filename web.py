@@ -164,7 +164,7 @@ def notice():
         content += f'{discord_tag}\n```'
         content = f'<@!{discord_id}> ' + content
     else:
-        content += f'`{contact}`\n```'
+        content += f'{contact}\n```'
 
     loop = asyncio.get_event_loop()
     message = loop.run_until_complete(channel.send(content))
