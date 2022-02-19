@@ -70,7 +70,9 @@ def swal(text, success=False):
 def index():
     user = request.args.get('user')
     key = request.args.get('key')
-    if key == None or user == None or r.get(f'key_{user}').decode('utf-8') != key:
+    if key == None and user == None:
+        return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+    if r.get(f'key_{user}') == None or r.get(f'key_{user}').decode('utf-8') != key:
         return swal("인증에 실패했습니다. 게임에 재접속하여 새 인증 링크를 발급해주세요.")
     scope = request.args.get(
         'scope',
