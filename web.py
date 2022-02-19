@@ -20,7 +20,7 @@ client = bot.client
 
 OAUTH2_CLIENT_ID = os.environ['OAUTH2_CLIENT_ID']
 OAUTH2_CLIENT_SECRET = os.environ['OAUTH2_CLIENT_SECRET']
-OAUTH2_REDIRECT_URI = 'http://localhost:5000/callback'
+OAUTH2_REDIRECT_URI = 'https://admin-obby-verify-production.up.railway.app/callback'
 BOT_TOKEN = os.environ['TOKEN']
 
 API_BASE_URL = 'https://discord.com/api/v9'
