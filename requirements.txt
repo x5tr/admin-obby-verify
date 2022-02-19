@@ -11,3 +11,4 @@ MarkupSafe==1.1.1
 Werkzeug==1.0.1
 pygame==2.1.2
 tk
+nest-asyncio==1.5.4

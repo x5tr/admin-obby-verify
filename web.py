@@ -6,6 +6,7 @@ import time
 import _thread
 import bot
 import asyncio
+import nest_asyncio
 
 from flask import Flask, session, redirect, request, url_for
 from requests_oauthlib import OAuth2Session
@@ -15,6 +16,8 @@ try:
     dotenv.load_dotenv()
 except:
     pass
+
+nest_asyncio.apply()
 
 client = bot.client
 
