@@ -161,7 +161,8 @@ def notice():
     if ':' in contact:
         discord_tag = contact.split(':')[0]
         discord_id = contact.split(':')[1]
-        content += f'<@!{discord_id}> ({discord_tag})\n```'
+        content += f'({discord_tag})\n```'
+        content = f'<@!{discord_id}> ' + content
     else:
         content += f'`{contact}`\n```'
 
